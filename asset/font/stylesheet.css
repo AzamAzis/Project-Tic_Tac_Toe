@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Google Sans Flex 120pt';
+    src: local('Google Sans Flex 120pt Bold'), local('GoogleSansFlex120pt-Bold'),
+        url('GoogleSansFlex120pt-Bold.woff2') format('woff2'),
+        url('GoogleSansFlex120pt-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Google Sans Flex 120pt';
+    src: local('Google Sans Flex 120pt Regular'), local('GoogleSansFlex120pt-Regular'),
+        url('GoogleSansFlex120pt-Regular.woff2') format('woff2'),
+        url('GoogleSansFlex120pt-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
