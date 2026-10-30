@@ -1,1 +1,89 @@
 @import "./reset.css";
+@import "./custom_property.css";
+
+body {
+	display: grid;
+	gap: var(--space-md);
+	grid-template-rows: auto 2fr calc(var(--space-xl) * 1.5);
+	background-image: var(--bg-body);
+	min-height: 100dvh;
+	font-family: "Google Sans Flex", sans-serif;
+	line-height: 1.5;
+}
+
+header,
+main,
+footer {
+	padding: var(--space-md);
+}
+
+main {
+	display: grid;
+	place-items: center;
+}
+
+.title {
+	background-color: var(--light-wood);
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow);
+	margin-inline: auto;
+	max-width: 350px;
+	font-size: var(--fs-title-mobile);
+}
+
+.container {
+	width: var(--responsive-size-container);
+	height: var(--responsive-size-container);
+}
+
+.columns:nth-child(1) {
+	transform: translateY(var(--move-vertically));
+}
+
+.columns:nth-child(3) {
+	transform: translateY(calc(var(--move-vertically) * -1));
+}
+
+.cell {
+	border: var(--border-width) solid black;
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-inset);
+	cursor: pointer;
+}
+
+.cell:nth-child(1) {
+	transform: translateX(var(--move-horizontally));
+}
+
+.cell:nth-child(3) {
+	transform: translateX(calc(var(--move-horizontally) * -1));
+}
+
+.cell:active {
+	/* background-color: rgba(139, 89, 43, 0.585); */
+	background-color: rgba(160, 81, 45, 0.512);
+	box-shadow: var(--shadow-press);
+}
+
+.para {
+	font-size: var(--fs-para-mobile);
+	font-weight: 700;
+}
+
+.link {
+	color: var(--color-black);
+	text-decoration: 1px solid underline var(--color-black);
+}
+
+.link:hover {
+	color: var(--color-white);
+	text-decoration-color: var(--color-white);
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--dark-wood);
+	box-shadow: var(--double-shadow);
+}

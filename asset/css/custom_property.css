@@ -1,0 +1,48 @@
+:root {
+	/* ||SPACING & LAYOUT */
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2rem;
+
+	--border-width: 3px;
+
+	--radius-sm: 5px;
+	--radius-md: 10px;
+
+	--move-horizontally: 2px;
+	--move-vertically: 2px;
+
+	--responsive-size-container: clamp(250px, 178.57px + 22.32vw, 500px);
+
+	/* ||TYPOGRAPHY */
+	--fs-title-mobile: clamp(1.5rem, 1.13rem + 1.86vw, 2rem); /* 320px - 750px */
+	--fs-title-tablet: clamp(2rem, 0.63rem + 2.92vw, 2.5rem); /* 750px - 1024px */
+	--fs-title-desktop: clamp(2.5rem, 1.27rem + 1.92vw,3rem); /* 1024px - 1440px */
+
+	--fs-para-mobile: clamp(0.75rem, 0.035rem + 0.06vw, 1rem); /* 320px - 750px */
+	--fs-para-tablet: clamp(1rem, 0.66rem + 0.73vw, 1.13rem); /* 750px - 1024px */
+	--fs-para-desktop: clamp(1.13rem, 0.82rem + 0.48vw, 1.25rem); /* 1024px - 1440px */
+
+	--color-black: #000000;
+	--color-white: #c4b4b4;
+
+
+	/* ||SHADOW */
+	--shadow: 5px 7px 0 black;
+	--double-shadow: 0 -7px 0 rgb(0, 0, 0), inset 0 7px 7px rgba(0, 0, 0, 0.192);
+	--shadow-inset: inset -5px -5px 5px rgba(0, 0, 0, 0.348);
+	--shadow-press: inset 2px 2px 6px rgba(0, 0, 0, 0.3);
+
+	/* ||BACKGROUND */
+	--bg-body: repeating-linear-gradient(
+		30deg,
+		#9c6631,
+		#9c6631 15px,
+		#8b5a2b 15px,
+		#8b5a2b 30px
+	);
+	--dark-wood: #8b5a2b;
+	--light-wood: #a47551;
+}
