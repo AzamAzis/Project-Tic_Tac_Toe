@@ -26,43 +26,87 @@ main {
 	background-color: var(--light-wood);
 	border-radius: var(--radius-sm);
 	box-shadow: var(--shadow);
+	margin-block-end: var(--space-xl);
 	margin-inline: auto;
 	max-width: 350px;
 	font-size: var(--fs-title-mobile);
 }
 
-.container {
+.player {
+	position: relative;
+	background-color: var(--player);
+	border-radius: var(--radius-md);
+	margin-inline: auto;
+	padding: var(--space-sm);
+	width: clamp(15rem, 40%, 20rem);
+	box-shadow: var(--shadow);
+	font-size: var(--fs-player);
+}
+
+.player::before,
+.player::after {
+	content: "";
+	position: absolute;
+	inset-block-start: 50%;
+	background-image: var(--bg-body);
+	border-radius: 50%;
+	height: var(--space-md);
+	width: var(--space-md);
+	transform: translateY(-50%);
+}
+
+.player::before {
+	inset-inline-start: 5%;
+	box-shadow: var(--hole-effect);
+}
+
+.player::after {
+	inset-inline-end: 5%;
+	box-shadow: var(--hole-reversed-effect);
+	transform: translateY(-50%) rotate(180deg);
+}
+
+.board {
+	display: grid;
+	grid-template: repeat(auto-fit, 33.33%) / repeat(auto-fit, 33.33%);
+	border-radius: var(--radius-md);
 	width: var(--responsive-size-container);
 	height: var(--responsive-size-container);
 }
 
-.columns:nth-child(1) {
-	transform: translateY(var(--move-vertically));
+.rows:is(
+	:nth-child(1),
+	:nth-child(2),
+	:nth-child(3)
+) {
+	margin-block-start: calc(var(--mv-y) * -1);
 }
 
-.columns:nth-child(3) {
-	transform: translateY(calc(var(--move-vertically) * -1));
+.rows:nth-child(1) {
+	margin-inline-start: calc(var(--mv-x) * -1);
+	transform: translateX(var(--mv-x));
+}
+
+.rows:nth-child(3) {
+	margin-inline-end: calc(var(--mv-x) * -1);
+	transform: translateX(calc(var(--mv-x) * -1));
+}
+
+.cell:nth-child(1) {
+	transform: translateY(var(--mv-y));
+}
+
+.cell:nth-child(3) {
+	transform: translateY(calc(var(--mv-y) * -1));
 }
 
 .cell {
 	border: var(--border-width) solid black;
 	border-radius: var(--radius-md);
+	height: 100%;
 	box-shadow: var(--shadow-inset);
 	cursor: pointer;
-}
-
-.cell:nth-child(1) {
-	transform: translateX(var(--move-horizontally));
-}
-
-.cell:nth-child(3) {
-	transform: translateX(calc(var(--move-horizontally) * -1));
-}
-
-.cell:active {
-	/* background-color: rgba(139, 89, 43, 0.585); */
-	background-color: rgba(160, 81, 45, 0.512);
-	box-shadow: var(--shadow-press);
+	-webkit-tap-highlight-color: transparent;
 }
 
 .para {
@@ -86,4 +130,13 @@ footer {
 	justify-content: center;
 	background-color: var(--dark-wood);
 	box-shadow: var(--double-shadow);
+}
+
+/* ||UTILITY */
+.bg-change-x {
+	background-color: var(--x);
+}
+
+.bg-change-y {
+	background-color: var(--o);
 }

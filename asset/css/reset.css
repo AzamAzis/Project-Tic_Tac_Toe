@@ -13,11 +13,6 @@ footer {
 	text-align: center;
 }
 
-table {
-	border-collapse: separate;
-	border-spacing: 0;
-}
-
 a {
 	-webkit-tap-highlight-color: transparent;
 }
