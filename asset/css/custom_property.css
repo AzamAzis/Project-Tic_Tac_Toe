@@ -22,6 +22,7 @@
 	--fs-title-desktop: clamp(2.5rem, 1.27rem + 1.92vw,3rem); /* 1024px - 1440px */
 
 	--fs-player: clamp(1.25rem, 1.18rem + 0.36vw,1.5rem);
+	--fs-game-value: clamp(5rem, 3.57rem + 7.14vw, 10rem);
 
 	--fs-para-mobile: clamp(0.75rem, 0.035rem + 0.06vw, 1rem); /* 320px - 750px */
 	--fs-para-tablet: clamp(1rem, 0.66rem + 0.73vw, 1.13rem); /* 750px - 1024px */

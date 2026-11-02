@@ -1,3 +1,5 @@
+import {cellItems, playerTag} from "./barrel.js";
+
 const GameBoard = (() => {
 	const columns = 3;
 	const rows = 3;
@@ -28,6 +30,8 @@ const GameBoard = (() => {
 
 function Controller(board) {
 	let result = "Game is going";
+	let gameEnd = false;
+
 	const addChoice = (location, choice) => {
 		if (!board[location]) {
 			board.splice(location, 1, choice);
@@ -50,22 +54,88 @@ function Controller(board) {
 			if (!condition1 || !condition2 || !condition3) continue;
 
 			if (condition1 === condition2 && condition2 === condition3) {
+				gameEnd = true;
 				if (condition1 === "x") {
-					result = "The winner is Player 1";
+					result = GameBoard.player[0].name;
 					break;
 				} else if (condition1 === "o") {
-					result = "The winner is Player 2";
+					result = GameBoard.player[1].name;
 					break;
 				}
 			} else if (!isEmpty) {
+				gameEnd = true;
 				result = "Tie";
 				break;
 			}
 		}
 	};
 	const getResult = () => result;
+	const isGameEnd = () => gameEnd;
 
-	return {addChoice, getBoard, setResult, getResult}
+	return {addChoice, gameEnd, getBoard, isGameEnd, setResult, getResult};
 }
 
-export {Controller, GameBoard};
+function Player() {
+	let player = "";
+
+	const setPlayer1 = () => {
+		player = GameBoard.player[0].name;
+	};
+	const setPlayer2 = () => {
+		player = GameBoard.player[1].name;
+	};
+	const getPlayer = () => player;
+
+	return {setPlayer1, setPlayer2, getPlayer};
+}
+
+function startGame(item) {
+	const board = GameBoard.gameBoard;
+	const controller = Controller(board);
+	const player = Player();
+	const player1 = GameBoard.player[0];
+	const player2 = GameBoard.player[1];
+	const player1Choice = player1.choice;
+	const player2Choice = player2.choice;
+	const cell = item.currentTarget;
+
+	if (cell.textContent !== "") return;
+
+	for (let i = 0; i < cellItems.length; i++) {
+		if (cellItems[i] === cell) {
+			if (playerTag.textContent === "Player 1") {
+				controller.addChoice(i, player1Choice);
+			} else {
+				controller.addChoice(i, player2Choice);
+			}
+		}
+	}
+
+	if (playerTag.textContent === "Player 1") {
+		cell.textContent = player1Choice.toUpperCase();
+		player.setPlayer2();
+		playerTag.textContent = player.getPlayer();
+	} else {
+		cell.textContent = player2Choice.toUpperCase();
+		player.setPlayer1();
+		playerTag.textContent = player.getPlayer();
+	}
+
+	controller.setResult();
+
+	if (controller.getResult() === player1.name) {
+		playerTag.textContent = `The winner is ${player1.name}`;
+	} else if (controller.getResult() === player2.name) {
+		playerTag.textContent = `The winner is ${player2.name}`;
+	} else if (controller.getResult() === "Tie") {
+		playerTag.textContent = `It's a tie`;
+	}
+
+	if (controller.isGameEnd()) {
+		cellItems.forEach((box) => {
+			box.removeEventListener("click", startGame);
+		});
+	}
+}
+
+export {Controller, GameBoard, startGame};
