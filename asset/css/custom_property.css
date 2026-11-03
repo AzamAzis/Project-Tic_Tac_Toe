@@ -14,7 +14,9 @@
 	--mv-x: 2px;
 	--mv-y: 2px;
 
-	--responsive-size-container: clamp(250px, 178.57px + 22.32vw, 500px);
+	--responsive-size-container: clamp(300px, 214.29px + 26.79vw, 600px);
+
+	--btn-active: 5px 5px;
 
 	/* ||TYPOGRAPHY */
 	--fs-title-mobile: clamp(1.5rem, 1.13rem + 1.86vw, 2rem); /* 320px - 750px */
@@ -22,21 +24,23 @@
 	--fs-title-desktop: clamp(2.5rem, 1.27rem + 1.92vw,3rem); /* 1024px - 1440px */
 
 	--fs-player: clamp(1.25rem, 1.18rem + 0.36vw,1.5rem);
-	--fs-game-value: clamp(5rem, 3.57rem + 7.14vw, 10rem);
+	--fs-game-value: clamp(3rem, 2.14rem + 4.23vw, 6rem);
 
 	--fs-para-mobile: clamp(0.75rem, 0.035rem + 0.06vw, 1rem); /* 320px - 750px */
 	--fs-para-tablet: clamp(1rem, 0.66rem + 0.73vw, 1.13rem); /* 750px - 1024px */
 	--fs-para-desktop: clamp(1.13rem, 0.82rem + 0.48vw, 1.25rem); /* 1024px - 1440px */
 
 	--color-black: #000000;
+	--color-disabled: hsla(0, 0%, 0%, 0.44);
 	--color-white: #c4b4b4;
 
 
 	/* ||SHADOW */
-	--shadow: 5px 7px 0 black;
+	--shadow: 5px 7px 0 #000000;
+	--shadow-btn: 0 5px 0 #000000;
 	--double-shadow: 0 -7px 0 rgb(0, 0, 0), inset 0 7px 7px rgba(0, 0, 0, 0.192);
 	--shadow-inset: inset -5px -5px 5px rgba(0, 0, 0, 0.3);
-	--shadow-press: inset 3px 3px 5px rgba(0, 0, 0, 0.3);
+	--shadow-press: inset 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 
 	/* ||BACKGROUND */
 	--bg-black: #000000;
@@ -47,11 +51,13 @@
 		#8b5a2b 15px,
 		#8b5a2b 30px
 	);
+	--bg-disabled: rgb(159, 113, 79);
+	--bg-brown: #966F33;
 	--player: rgb(146, 79, 15);
 	--hole-effect: inset 2px -2px #000000;
 	--hole-reversed-effect: inset -2px 2px #000000;
 	--dark-wood: rgb(139, 90, 43);
-	--light-wood: rgb(164, 117, 81);
+	--light-wood: rgb(214, 146, 94);
 	--x: rgba(190, 106, 45, 0.75);
 	--o: rgba(255, 160, 92, 0.75);
 }

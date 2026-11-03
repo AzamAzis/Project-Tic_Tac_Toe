@@ -13,6 +13,13 @@ footer {
 	text-align: center;
 }
 
+button {
+	border-style: none;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
 a {
 	-webkit-tap-highlight-color: transparent;
 }

@@ -38,7 +38,7 @@ main {
 	border-radius: var(--radius-md);
 	margin-inline: auto;
 	padding: var(--space-sm);
-	inline-size: clamp(20rem, 40%, 25rem);
+	inline-size: clamp(17rem, 40%, 25rem);
 	box-shadow: var(--shadow);
 	font-size: var(--fs-player);
 }
@@ -68,30 +68,20 @@ main {
 
 .board {
 	display: grid;
-	grid-template: repeat(3, 33.33%) / repeat(3, 33.33%);
+	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 	border-radius: var(--radius-md);
 	inline-size: var(--responsive-size-container);
+	margin-block-end: var(--space-xl);
 	block-size: var(--responsive-size-container);
-	background-color: red;
 }
 
-/* .rows:is(
-	:nth-child(1),
+.cell:is(
 	:nth-child(2),
-	:nth-child(3)
+	:nth-child(5),
+	:nth-child(8)
 ) {
-	margin-block-start: calc(var(--mv-y) * -1);
+	width: calc(100% + 2px);
 }
-
-.rows:nth-child(1) {
-	margin-inline-start: calc(var(--mv-x) * -1);
-	transform: translateX(var(--mv-x));
-}
-
-.rows:nth-child(3) {
-	margin-inline-end: calc(var(--mv-x) * -1);
-	transform: translateX(calc(var(--mv-x) * -1));
-} */
 
 .cell:is(
 	:nth-child(1),
@@ -121,6 +111,7 @@ main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: var(--bg-brown);
 	border: var(--border-width) solid black;
 	border-radius: var(--radius-md);
 	font-size: var(--fs-game-value);
@@ -130,6 +121,7 @@ main {
 	cursor: pointer;
 	user-select: none;
 	-webkit-tap-highlight-color: transparent;
+	transition: all 0.2s ease-in;
 }
 
 .para {
@@ -147,6 +139,27 @@ main {
 	text-decoration-color: var(--color-white);
 }
 
+.reset {
+	background-color: var(--light-wood);
+	box-shadow: var(--shadow-btn);
+	border-radius: var(--radius-sm);
+	padding-block: var(--space-sm);
+	width: 10rem;
+	font-weight: 700;
+	transition: box-shadow 0.1s ease-in, transform 0.1s ease-in;
+}
+
+.reset:active {
+	transform: translateY(5px);
+	box-shadow: none;
+}
+
+.reset:disabled {
+	background-color: var(--bg-disabled);
+	color: var(--color-disabled);
+	box-shadow: none;
+}
+
 footer {
 	display: flex;
 	align-items: center;
@@ -156,10 +169,12 @@ footer {
 }
 
 /* ||UTILITY */
-.bg-change-x {
+.board .bg-change-x {
 	background-color: var(--x);
+	box-shadow: var(--shadow-press);
 }
 
-.bg-change-y {
+.board .bg-change-o {
 	background-color: var(--o);
+	box-shadow: var(--shadow-press);
 }

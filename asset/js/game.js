@@ -1,4 +1,5 @@
 import {cellItems, playerTag} from "./barrel.js";
+import { resetBtn } from "./part.js";
 
 const GameBoard = (() => {
 	const columns = 3;
@@ -44,16 +45,27 @@ function Controller(board) {
 			[0, 3, 6], [3, 4, 5], [2, 4, 6],
 			[0, 4, 8], [6, 7, 8]
 		];
+		const isFilled = board.every((item) => item);
+
 		for (let i = 0; i < winningCondition.length; i++) {
 			const gameState = winningCondition[i];
 			const condition1 = board[gameState[0]];
 			const condition2 = board[gameState[1]];
 			const condition3 = board[gameState[2]];
-			const isEmpty = board.some((item) => !item);
 
 			if (!condition1 || !condition2 || !condition3) continue;
 
-			if (condition1 === condition2 && condition2 === condition3) {
+			const isMet = condition1 === condition2 && condition2 === condition3;
+			const isAllMet = board.some((cell) => cell === condition1 && cell === condition2 && cell === condition3);
+
+			if (isFilled && !isMet) {
+				gameEnd = "true";
+				result = "Tie";
+			}
+
+			if (!isMet) continue;
+
+			if (isMet) {
 				gameEnd = true;
 				if (condition1 === "x") {
 					result = GameBoard.player[0].name;
@@ -62,17 +74,16 @@ function Controller(board) {
 					result = GameBoard.player[1].name;
 					break;
 				}
-			} else if (!isEmpty) {
-				gameEnd = true;
-				result = "Tie";
-				break;
 			}
-		}
-	};
-	const getResult = () => result;
+		};
+	}
 	const isGameEnd = () => gameEnd;
+	const getResult = () => result;
+	const resetResult = () => {
+		result = "";
+	};
 
-	return {addChoice, gameEnd, getBoard, isGameEnd, setResult, getResult};
+	return {addChoice, isGameEnd, getBoard, setResult, getResult, resetResult};
 }
 
 function Player() {
@@ -101,6 +112,10 @@ function startGame(item) {
 
 	if (cell.textContent !== "") return;
 
+	if (resetBtn.disabled) {
+		resetBtn.disabled = false;
+	}
+
 	for (let i = 0; i < cellItems.length; i++) {
 		if (cellItems[i] === cell) {
 			if (playerTag.textContent === "Player 1") {
@@ -112,11 +127,11 @@ function startGame(item) {
 	}
 
 	if (playerTag.textContent === "Player 1") {
-		cell.textContent = player1Choice.toUpperCase();
+		setBoard(cell, "bg-change-x", player1Choice);
 		player.setPlayer2();
 		playerTag.textContent = player.getPlayer();
 	} else {
-		cell.textContent = player2Choice.toUpperCase();
+		setBoard(cell, "bg-change-o", player2Choice);
 		player.setPlayer1();
 		playerTag.textContent = player.getPlayer();
 	}
@@ -138,4 +153,40 @@ function startGame(item) {
 	}
 }
 
-export {Controller, GameBoard, startGame};
+function setBoard(cell, classItem, choice) {
+	cell.classList.add(classItem);
+	cell.textContent = choice.toUpperCase();
+}
+
+function reset() {
+	const board = GameBoard.gameBoard;
+
+	playerTag.textContent = GameBoard.player[0].name;
+
+	if (!resetBtn.disabled) {
+		resetBtn.disabled = true;
+	}
+
+	for (let i = 0; i < board.length; i++) {
+		board.splice(i, 1, "");
+	}
+
+	cellItems.forEach((cell) => {
+		const isContainX = cell.classList.contains("bg-change-x");
+		const isContainO = cell.classList.contains("bg-change-o");
+		;
+
+		if (cell.textContent !== "") {
+			cell.textContent = "";
+			if (isContainX) {
+				cell.classList.remove("bg-change-x");
+			} else if (isContainO) {
+				cell.classList.remove("bg-change-o");
+			}
+		}
+
+		cell.addEventListener("click", startGame);
+	});
+}
+
+export {Controller, GameBoard, reset, startGame};
