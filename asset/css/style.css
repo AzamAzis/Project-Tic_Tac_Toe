@@ -29,7 +29,7 @@ main {
 	margin-block-end: var(--space-xl);
 	margin-inline: auto;
 	max-inline-size: 350px;
-	font-size: var(--fs-title-mobile);
+	font-size: var(--fs-title);
 }
 
 .player-tag {
@@ -76,14 +76,6 @@ main {
 }
 
 .cell:is(
-	:nth-child(2),
-	:nth-child(5),
-	:nth-child(8)
-) {
-	width: calc(100% + 2px);
-}
-
-.cell:is(
 	:nth-child(1),
 	:nth-child(2),
 	:nth-child(3)
@@ -125,7 +117,7 @@ main {
 }
 
 .para {
-	font-size: var(--fs-para-mobile);
+	font-size: var(--fs-para);
 	font-weight: 700;
 }
 
@@ -143,8 +135,9 @@ main {
 	background-color: var(--light-wood);
 	box-shadow: var(--shadow-btn);
 	border-radius: var(--radius-sm);
-	padding-block: var(--space-sm);
-	width: 10rem;
+	padding-block: var(--block);
+	padding-inline: var(--inline);
+	font-size: var(--fs-md);
 	font-weight: 700;
 	transition: box-shadow 0.1s ease-in, transform 0.1s ease-in;
 }

@@ -15,20 +15,18 @@
 	--mv-y: 2px;
 
 	--responsive-size-container: clamp(300px, 214.29px + 26.79vw, 600px);
-
+	--block: 1.25rem;
+	--inline: 5rem;
 	--btn-active: 5px 5px;
 
 	/* ||TYPOGRAPHY */
-	--fs-title-mobile: clamp(1.5rem, 1.13rem + 1.86vw, 2rem); /* 320px - 750px */
-	--fs-title-tablet: clamp(2rem, 0.63rem + 2.92vw, 2.5rem); /* 750px - 1024px */
-	--fs-title-desktop: clamp(2.5rem, 1.27rem + 1.92vw,3rem); /* 1024px - 1440px */
+	--fs-title: clamp(1.5rem, 1.13rem + 1.86vw, 2rem);
 
 	--fs-player: clamp(1.25rem, 1.18rem + 0.36vw,1.5rem);
 	--fs-game-value: clamp(3rem, 2.14rem + 4.23vw, 6rem);
 
-	--fs-para-mobile: clamp(0.75rem, 0.035rem + 0.06vw, 1rem); /* 320px - 750px */
-	--fs-para-tablet: clamp(1rem, 0.66rem + 0.73vw, 1.13rem); /* 750px - 1024px */
-	--fs-para-desktop: clamp(1.13rem, 0.82rem + 0.48vw, 1.25rem); /* 1024px - 1440px */
+	--fs-md: 1rem;
+	--fs-para: clamp(0.75rem, 0.035rem + 0.06vw, 1rem);
 
 	--color-black: #000000;
 	--color-disabled: hsla(0, 0%, 0%, 0.44);
