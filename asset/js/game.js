@@ -56,7 +56,6 @@ function Controller(board) {
 			if (!condition1 || !condition2 || !condition3) continue;
 
 			const isMet = condition1 === condition2 && condition2 === condition3;
-			const isAllMet = board.some((cell) => cell === condition1 && cell === condition2 && cell === condition3);
 
 			if (isFilled && !isMet) {
 				gameEnd = "true";
